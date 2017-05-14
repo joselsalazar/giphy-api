@@ -26,7 +26,7 @@ assignGifs();
 $("#add-gif").click(function(event) {
   // event.preventDefault() prevents the form from trying to submit itself.
   event.preventDefault();
-  var newGif = $("#gif-input").val().trim();
+  var newGif = $("#gif-input").val().trim().toLowerCase();
   animals.push(newGif);
 
   $('#gif-input').val("");
@@ -50,16 +50,30 @@ function assignGifs () {
 			$('.giphy').empty();
 			for (var i=0; i < 10; i++) {
 				var gifDiv = $("<div>");
-				gifDiv.addClass("giphys");
+				gifDiv.addClass("gif-div");
 				var ratingP = $("<p>").text("Rating: " + response.data[i].rating);
 				var imageGif = $("<img>");
-				imageGif.attr("src", response.data[i].images.downsized.url);
+				imageGif.attr("data-animate", response.data[i].images.downsized.url);
+				imageGif.attr("data-still", response.data[i].images.downsized_still.url);
+				imageGif.attr("gif-state", "animate");
+				imageGif.attr("src", response.data[i].images.downsized.url)
+				imageGif.addClass("gif");
 				gifDiv.append(ratingP);
 				gifDiv.append(imageGif);
 				$('.giphy').append(gifDiv);
 			};
+			// Add Functionality to Play/Pause Giphys
+			$(".gif").on("click", function() {
+				var state = $(this).attr("gif-state");
+				if (state === "animate") {
+					$(this).attr("src", $(this).attr("data-still"));
+					$(this).attr("gif-state", "still");
+				} else {
+					$(this).attr("src", $(this).attr("data-animate"));
+					$(this).attr("gif-state", "animate");
+				}
+			});
 		});
 	});
 }
 
-// Add Functionality to Play/Pause Giphys
