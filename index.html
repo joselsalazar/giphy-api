@@ -2,19 +2,21 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:400,700" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="buttons"></div>
-	<main class="giphy">
-		
-	</main>
-	<form id="gif-form">
-	  <label for="gif-input">Add a Gif</label>
-	  <input type="text" id="gif-input"><br>
-	  <!-- Button triggers new movie to be added -->
-	  <input id="add-gif" type="submit" value="Add a Gif">
-	</form>
+	<div class="wrapper">
+		<main>
+			<form id="gif-form">
+			  <input type="text" id="gif-input"><br>
+			  <input id="add-gif" type="submit" value="Add a Gif">
+			</form>
+			<div class="buttons"></div>
+			<div class="giphy"></div>
+		</main>
+	</div>
 	<script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>

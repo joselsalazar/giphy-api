@@ -48,7 +48,7 @@ function assignGifs () {
 		}).done(function(response) {
 			console.log(response);
 			$('.giphy').empty();
-			for (var i=0; i < 10; i++) {
+			for (var i=0; i < 12; i++) {
 				var gifDiv = $("<div>");
 				gifDiv.addClass("gif-div");
 				var ratingP = $("<p>").text("Rating: " + response.data[i].rating);
@@ -58,8 +58,8 @@ function assignGifs () {
 				imageGif.attr("gif-state", "animate");
 				imageGif.attr("src", response.data[i].images.downsized.url)
 				imageGif.addClass("gif");
-				gifDiv.append(ratingP);
 				gifDiv.append(imageGif);
+				gifDiv.append(ratingP);
 				$('.giphy').append(gifDiv);
 			};
 			// Add Functionality to Play/Pause Giphys
